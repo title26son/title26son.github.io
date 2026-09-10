@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一耽-耽美文化爱好者交流与作品推荐平台</title>
+    <meta name="description" content="一耽是专注于耽美文化、BL作品推荐与交流的综合性平台，提供小说、漫画、广播剧等作品资讯与阅读指南，打造温暖的同好社区。" />
+    <meta name="keywords" content="一耽,耽美,BL,耽美小说,耽美漫画,广播剧,同人,腐文化,作品推荐" />
+    <link rel="stylesheet" href="data:text/css,@import%20url('data:text/css,body%7Bmargin%3A0%3Bfont-family%3A%22Microsoft%20YaHei%22%2C%22PingFang%20SC%22%2Csans-serif%3Bbackground%3A%23faf7f2%3Bcolor%3A%23333%3B%7D')%3B">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #faf7f2; color: #333; line-height: 1.7; }
+        a { text-decoration: none; color: #5a4a7a; transition: color 0.3s; }
+        a:hover { color: #9b6b9e; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* 顶部导航 */
+        .site-header { background: linear-gradient(135deg, #3d2d54 0%, #6b4b7a 100%); padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .logo { font-size: 28px; font-weight: bold; color: #f7e6d9; letter-spacing: 2px; }
+        .logo span { color: #e8a9c5; }
+        .nav-menu { display: flex; gap: 25px; }
+        .nav-menu a { color: #ddd0e8; font-size: 15px; padding: 5px 10px; border-radius: 20px; }
+        .nav-menu a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .search-box { display: flex; align-items: center; background: rgba(255,255,255,0.15); border-radius: 30px; padding: 4px 15px; }
+        .search-box input { background: transparent; border: none; outline: none; color: #fff; width: 140px; font-size: 14px; }
+        .search-box input::placeholder { color: #ccc0dd; }
+        .search-box button { background: transparent; border: none; color: #f0d9e8; cursor: pointer; font-size: 16px; }
+
+        /* 主视觉横幅 */
+        .hero-section { background: linear-gradient(145deg, #2a1f3a 0%, #4a3560 100%); color: #fff; padding: 60px 0 70px; text-align: center; position: relative; overflow: hidden; }
+        .hero-section::before { content: ""; position: absolute; top: -50%; left: -10%; width: 120%; height: 200%; background: radial-gradient(circle at 70% 20%, rgba(233, 169, 197, 0.15), transparent 50%); }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-content h1 { font-size: 42px; font-weight: 300; letter-spacing: 6px; margin-bottom: 15px; }
+        .hero-content h1 strong { font-weight: 600; color: #f2c4e0; }
+        .hero-content p { font-size: 18px; opacity: 0.9; max-width: 650px; margin: 0 auto 30px; letter-spacing: 1px; }
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 12px 30px; border-radius: 50px; font-size: 15px; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-primary { background: #d68bb0; color: #fff; }
+        .btn-primary:hover { background: #e79dc3; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(214,139,176,0.4); }
+        .btn-outline { background: transparent; color: #e8c8e0; border: 1px solid #c9a0c0; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #e8c8e0; }
+
+        /* 分类导航卡片 */
+        .category-section { padding: 50px 0 30px; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 30px; }
+        .category-card { background: #fff; border-radius: 15px; padding: 25px 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; border-bottom: 3px solid transparent; }
+        .category-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-bottom-color: #9b6b9e; }
+        .category-icon { font-size: 38px; margin-bottom: 12px; }
+        .category-card h3 { font-size: 18px; color: #4a3560; margin-bottom: 8px; }
+        .category-card p { font-size: 14px; color: #888; }
+
+        /* 热门作品区域 */
+        .featured-section { padding: 30px 0; }
+        .section-title { text-align: center; font-size: 28px; color: #3d2d54; margin-bottom: 10px; position: relative; }
+        .section-title::after { content: ""; display: block; width: 60px; height: 3px; background: #d68bb0; margin: 12px auto 0; border-radius: 2px; }
+        .section-desc { text-align: center; color: #888; font-size: 15px; margin-bottom: 30px; }
+        .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+        .work-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.06); transition: transform 0.3s; }
+        .work-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .work-cover { height: 160px; background: linear-gradient(135deg, #c9a0c0, #e8c8e0); position: relative; display: flex; align-items: center; justify-content: center; font-size: 40px; color: rgba(255,255,255,0.8); }
+        .work-cover.cover-1 { background: linear-gradient(135deg, #7a5a8a, #b08fc0); }
+        .work-cover.cover-2 { background: linear-gradient(135deg, #8a5a6a, #c08a9a); }
+        .work-cover.cover-3 { background: linear-gradient(135deg, #5a7a8a, #8ab0c0); }
+        .work-cover.cover-4 { background: linear-gradient(135deg, #6a8a5a, #a0c08a); }
+        .work-cover.cover-5 { background: linear-gradient(135deg, #8a6a5a, #c0a08a); }
+        .work-cover.cover-6 { background: linear-gradient(135deg, #5a5a8a, #8a8ac0); }
+        .work-info { padding: 15px; }
+        .work-info h4 { font-size: 16px; color: #3d2d54; margin-bottom: 5px; }
+        .work-info .tag { font-size: 12px; color: #9b6b9e; background: #f5eef8; padding: 2px 10px; border-radius: 20px; display: inline-block; margin-right: 5px; }
+        .work-info .rating { font-size: 13px; color: #d68bb0; margin-top: 8px; }
+        .work-info .desc { font-size: 13px; color: #999; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* 最新更新与榜单 */
+        .updates-section { padding: 30px 0; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .panel { background: #fff; border-radius: 15px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); }
+        .panel-title { font-size: 20px; color: #3d2d54; padding-bottom: 12px; border-bottom: 2px solid #f0e6f0; margin-bottom: 20px; }
+        .update-list li { padding: 12px 0; border-bottom: 1px dashed #eee; display: flex; justify-content: space-between; align-items: center; }
+        .update-list li:last-child { border-bottom: none; }
+        .update-list .name { font-size: 15px; color: #555; }
+        .update-list .name:hover { color: #9b6b9e; }
+        .update-list .time { font-size: 13px; color: #bbb; }
+        .rank-list li { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f8f4f8; }
+        .rank-num { width: 30px; height: 30px; background: #f0e6f0; color: #7a5a8a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; font-size: 14px; }
+        .rank-num.top-1 { background: #d68bb0; color: #fff; }
+        .rank-num.top-2 { background: #c9a0c0; color: #fff; }
+        .rank-num.top-3 { background: #b08fc0; color: #fff; }
+        .rank-item-info { flex: 1; }
+        .rank-item-info h5 { font-size: 15px; margin-bottom: 2px; }
+        .rank-item-info span { font-size: 13px; color: #aaa; }
+
+        /* 社区互动 */
+        .community-section { padding: 40px 0; background: #f0e9f2; }
+        .community-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .topic-card { background: #fff; border-radius: 12px; padding: 20px; transition: all 0.3s; }
+        .topic-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .topic-card h4 { font-size: 17px; margin-bottom: 6px; }
+        .topic-card p { font-size: 14px; color: #888; margin-bottom: 10px; }
+        .topic-meta { color: #b0a0b8; font-size: 13px; display: flex; gap: 15px; }
+
+        /* 阅读指南 */
+        .guide-section { padding: 40px 0; }
+        .guide-content { max-width: 800px; margin: 0 auto; }
+        .guide-content p { margin-bottom: 15px; font-size: 16px; }
+        .guide-content a { color: #9b6b9e; text-decoration: underline; }
+
+        /* FAQ */
+        .faq-section { padding: 40px 0; }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border-radius: 10px; margin-bottom: 10px; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .faq-question { padding: 18px 25px; cursor: pointer; font-size: 16px; font-weight: 500; color: #4a3560; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "+"; font-size: 22px; color: #d68bb0; }
+        .faq-answer { padding: 0 25px 18px; display: none; font-size: 15px; color: #666; }
+
+        /* 页脚 */
+        .site-footer { background: #2a1f3a; color: #b8a8c0; padding: 40px 0 20px; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 20px; }
+        .footer-links a { color: #b8a8c0; font-size: 14px; }
+        .footer-links a:hover { color: #fff; }
+        .footer-copy { font-size: 14px; opacity: 0.7; }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header-inner { flex-direction: column; gap: 15px; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .search-box { width: 100%; }
+            .search-box input { width: 100%; }
+            .hero-content h1 { font-size: 30px; }
+            .hero-content p { font-size: 16px; }
+            .two-col { grid-template-columns: 1fr; }
+            .works-grid { grid-template-columns: repeat(2, 1fr); }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .works-grid { grid-template-columns: 1fr; }
+            .category-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">一<span>耽</span>文化</div>
+            <nav class="nav-menu">
+                <a href="#home">首页</a>
+                <a href="#category">作品分类</a>
+                <a href="#hot">热门推荐</a>
+                <a href="#community">同好社区</a>
+                <a href="#guide">新手指南</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索作品/作者">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主视觉 -->
+    <section class="hero-section" id="home">
+        <div class="container hero-content">
+            <h1>欢迎来到<strong>一耽</strong>世界</h1>
+            <p>发现优质耽美作品，结识同好伙伴，分享阅读乐趣。在这里，每一个关于爱的故事都值得被看见。</p>
+            <div class="hero-buttons">
+                <a href="#hot" class="btn btn-primary">探索热门作品</a>
+                <a href="#community" class="btn btn-outline">进入社区讨论</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分类导航 -->
+    <section class="category-section" id="category">
+        <div class="container">
+            <h2 class="section-title">作品分类</h2>
+            <p class="section-desc">按类型探索你感兴趣的作品方向</p>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">📖</div>
+                    <h3>耽美小说</h3>
+                    <p>现代、古代、玄幻等各类小说</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>漫画</h3>
+                    <p>国漫、日漫、条漫精选</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎧</div>
+                    <h3>广播剧</h3>
+                    <p>热门广播剧推荐与收听</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎬</div>
+                    <h3>影视剧</h3>
+                    <p>耽改剧、相关影视资讯</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">✏️</div>
+                    <h3>同人创作</h3>
+                    <p>同人文、插画、视频剪辑</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💬</div>
+                    <h3>话题讨论</h3>
+                    <p>热门话题、剧情讨论区</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门作品推荐 -->
+    <section class="featured-section" id="hot">
+        <div class="container">
+            <h2 class="section-title">本周热门作品</h2>
+            <p class="section-desc">根据一耽社区同好关注度整理，每周更新</p>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-cover cover-1">🌙</div>
+                    <div class="work-info">
+                        <h4>明月照我还</h4>
+                        <span class="tag">古代</span><span class="tag">权谋</span>
+                        <div class="rating">★★★★☆ 4.8</div>
+                        <div class="desc">将军与谋士的宿命纠葛，权谋之下的深情守护。</div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-cover cover-2">🍃</div>
+                    <div class="work-info">
+                        <h4>春日迟迟</h4>
+                        <span class="tag">现代</span><span class="tag">治愈</span>
+                        <div class="rating">★★★★★ 4.9</div>
+                        <div class="desc">都市里两个温柔灵魂的相遇，平淡日常中的心动。</div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-cover cover-3">⚔️</div>
+                    <div class="work-info">
+                        <h4>剑出寒山</h4>
+                        <span class="tag">玄幻</span><span class="tag">仙侠</span>
+                        <div class="rating">★★★★☆ 4.7</div>
+                        <div class="desc">正道魁首与魔道之主的百年恩怨，一场跨越正邪的救赎。</div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-cover cover-4">🎭</div>
+                    <div class="work-info">
+                        <h4>戏骨</h4>
+                        <span class="tag">娱乐圈</span><span class="tag">双向奔赴</span>
+                        <div class="rating">★★★★☆ 4.6</div>
+                        <div class="desc">影帝与新人演员因戏结缘，在聚光灯下相知相爱。</div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-cover cover-5">📜</div>
+                    <div class="work-info">
+                        <h4>丹青引</h4>
+                        <span class="tag">古风</span><span class="tag">宫廷</span>
+                        <div class="rating">★★★★☆ 4.5</div>
+                        <div class="desc">宫廷画师与年轻帝王的隐秘情愫，丹青笔墨间的深情。</div>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-cover cover-6">🌆</div>
+                    <div class="work-info">
+                        <h4>城市之光</h4>
+                        <span class="tag">悬疑</span><span class="tag">刑侦</span>
+                        <div class="rating">★★★★☆ 4.7</div>
+                        <div class="desc">刑警与心理学家联手破案，在黑暗中寻找光明。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新更新与榜单 -->
+    <section class="updates-section">
+        <div class="container">
+            <div class="two-col">
+                <!-- 最近更新 -->
+                <div class="panel">
+                    <h3 class="panel-title">📌 最近更新</h3>
+                    <ul class="update-list">
+                        <li><span class="name">《春风不度》第45话更新</span><span class="time">2小时前</span></li>
+                        <li><span class="name">《晚风知我意》广播剧第二季上线</span><span class="time">5小时前</span></li>
+                        <li><span class="name">《逆光》番外篇发布</span><span class="time">昨天</span></li>
+                        <li><span class="name">《孤岛》漫画第12话</span><span class="time">昨天</span></li>
+                        <li><span class="name">《半山听雨》小说新章节</span><span class="time">2天前</span></li>
+                        <li><span class="name">《人间无数》影视化官宣</span><span class="time">3天前</span></li>
+                    </ul>
+                </div>
+                <!-- 热门榜单 -->
+                <div class="panel">
+                    <h3 class="panel-title">🏆 一耽热读榜</h3>
+                    <ul class="rank-list">
+                        <li>
+                            <span class="rank-num top-1">1</span>
+                            <div class="rank-item-info">
+                                <h5>《春日迟迟》</h5>
+                                <span>现代治愈 · 已完结</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="rank-num top-2">2</span>
+                            <div class="rank-item-info">
+                                <h5>《剑出寒山》</h5>
+                                <span>玄幻仙侠 · 连载中</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="rank-num top-3">3</span>
+                            <div class="rank-item-info">
+                                <h5>《明月照我还》</h5>
+                                <span>古代权谋 · 已完结</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="rank-num">4</span>
+                            <div class="rank-item-info">
+                                <h5>《戏骨》</h5>
+                                <span>娱乐圈 · 连载中</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="rank-num">5</span>
+                            <div class="rank-item-info">
+                                <h5>《城市之光》</h5>
+                                <span>悬疑刑侦 · 连载中</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社区互动 -->
+    <section class="community-section" id="community">
+        <div class="container">
+            <h2 class="section-title">同好热议</h2>
+            <p class="section-desc">来看看大家都在聊什么</p>
+            <div class="community-box">
+                <div class="topic-card">
+                    <h4>💬 你心中的年度最佳耽美小说是哪部？</h4>
+                    <p>大家来推荐今年读过最惊艳的作品吧，附上理由更佳！</p>
+                    <div class="topic-meta"><span>💬 328 回复</span><span>❤️ 1.2k 点赞</span></div>
+                </div>
+                <div class="topic-card">
+                    <h4>🎨 哪些漫画的画风让你一眼入坑？</h4>
+                    <p>分享那些画风独特、分镜惊艳的宝藏漫画作品。</p>
+                    <div class="topic-meta"><span>💬 156 回复</span><span>❤️ 856 点赞</span></div>
+                </div>
+                <div class="topic-card">
+                    <h4>🎧 广播剧配音演员阵容推荐</h4>
+                    <p>你心中最贴合角色的配音演员是谁？来聊聊那些神仙选角。</p>
+                    <div class="topic-meta"><span>💬 218 回复</span><span>❤️ 934 点赞</span></div>
+                </div>
+                <div class="topic-card">
+                    <h4>📝 同人创作交流：如何塑造立体角色</h4>
+                    <p>写作同人文时如何把握原作角色性格？一起交流创作经验。</p>
+                    <div class="topic-meta"><span>💬 89 回复</span><span>❤️ 420 点赞</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新手指南 -->
+    <section class="guide-section" id="guide">
+        <div class="container">
+            <h2 class="section-title">一耽新手指南</h2>
+            <p class="section-desc">初入耽美世界，从这里开始</p>
+            <div class="guide-content">
+                <p>如果你刚刚接触耽美文化，可能会对很多术语感到陌生。所谓耽美（BL），是指描写男性之间爱情的作品，涵盖小说、漫画、广播剧、影视等多种形式。一耽平台旨在为同好提供作品推荐与交流空间，帮助大家更轻松地找到符合自己口味的作品。</p>
+                <p>我们建议新朋友先浏览<strong>热门推荐</strong>和<strong>作品分类</strong>，从高分完结作品入手，逐步了解自己偏好的题材与风格。同时，社区中的<strong>话题讨论</strong>版块也是快速融入的好去处，热心的同好们很乐意为你解答疑问。</p>
+                <p>请尊重创作与分享，在交流时注意用语文明，共同维护友善的社区氛围。更多使用问题，可以查看下方的常见问题解答。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">常见问题</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">一耽平台是免费阅读网站吗？</div>
+                    <div class="faq-answer">一耽是作品推荐与讨论社区，本身不直接提供阅读内容。我们会推荐来自正版平台的作品，并附上阅读指引。请支持正版创作，尊重作者劳动成果。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何找到适合新手的入门作品？</div>
+                    <div class="faq-answer">建议从分类中的“现代”、“治愈”等轻松题材开始，或是查看热读榜中已完结、评分较高的作品。也可以在社区发帖询问，同好们会热情推荐。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">社区有哪些发帖规则？</div>
+                    <div class="faq-answer">请勿发布任何形式的广告、引战或不友善内容。讨论作品时请避免剧透关键情节，如需剧透请提前标注。尊重所有作品与创作者，理性交流。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何参与社区话题讨论？</div>
+                    <div class="faq-answer">注册账号后即可在话题下方回复参与讨论，也可以自行创建新话题。积极参与、友善发言，会让你更快融入一耽社区。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">首页</a>
+                <a href="#category">作品分类</a>
+                <a href="#hot">热门推荐</a>
+                <a href="#community">同好社区</a>
+                <a href="#guide">新手指南</a>
+            </div>
+            <p class="footer-copy">© 2024 一耽文化 · 尊重创作，分享热爱</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 折叠交互
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                var answer = this.nextElementSibling;
+                var isOpen = answer.style.display === 'block';
+                // 关闭所有
+                document.querySelectorAll('.faq-answer').forEach(function(item) {
+                    item.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-question').forEach(function(q) {
+                    q.style.color = '#4a3560';
+                });
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    this.style.color = '#d68bb0';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
